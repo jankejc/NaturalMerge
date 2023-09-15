@@ -23,7 +23,7 @@ public class RecordsGenerator {
             }
 
             // Write record by record.
-            if (!FileManager.writeToFile(recordsFile, recordToFile.toString())) {
+            if (!FileManager.writeToMergeTapeFile(recordsFile, recordToFile.toString())) {
                 return false;
             }
         }
@@ -43,7 +43,7 @@ public class RecordsGenerator {
             }
 
             // Write record by record.
-            if (!FileManager.writeToFile(recordsFile, recordToFile.toString())) {
+            if (!FileManager.writeToMergeTapeFile(recordsFile, recordToFile.toString())) {
                 return false;
             }
         }

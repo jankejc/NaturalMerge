@@ -77,11 +77,11 @@ public class CommunicationManager {
 
     public static boolean whetherStartSort() {
         System.out.println("---------------------------------");
-        System.out.println("Start sort? (type: 'yes' or 'no')");
+        System.out.println("Start sort? (y)es, (n)o");
         String input = scanner.nextLine();
         switch (input) {
-            case "yes" -> { return true; }
-            case "no" -> { return false; }
+            case "y" -> { return true; }
+            case "n" -> { return false; }
             default -> {
                 say("'" + input + "' command is invalid.");
                 return false;
@@ -90,11 +90,11 @@ public class CommunicationManager {
     }
 
     public static boolean whetherPrintFile() {
-        System.out.println("Show file? (type: 'yes' or 'no')");
+        System.out.println("Show file? (y)es, (n)o");
         String input = scanner.nextLine();
         switch (input) {
-            case "yes" -> { return true; }
-            case "no" -> { return false; }
+            case "y" -> { return true; }
+            case "n" -> { return false; }
             default -> {
                 say("'" + input + "' command is invalid.");
                 return false;
