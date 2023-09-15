@@ -44,8 +44,8 @@ public class FileManager {
             byte[] block = new byte[BLOCK_SIZE_IN_BYTES];
             List<Record> records = new ArrayList<>();
             while (true) {
-                flushBuffer(mergeTape.getFile(), dataBufferMergeTape);
-                int bytesRead = setNextBlock(mergeTape, block);
+                flushBuffer(mergeTape.getFile(), dataBufferMergeTape, true);
+                int bytesRead = setNextBlock(mergeTape, block, true);
                 if (bytesRead == 0) {
                     CommunicationManager.say("Exception in getting next block!");
                     break;
@@ -140,8 +140,8 @@ public class FileManager {
             if (firstIndex == RECORDS_IN_BLOCK || (isFirstTapeLastBlock && firstIndex == endFirstIndex)) {
                 firstTapeBlockRecords.clear();
                 firstIndex = 0;
-                flushBuffer(firstTape.getFile(), dataBufferFirstTape);
-                int firstTapeBytesRead = setNextBlock(firstTape, firstTapeBlock);
+                flushBuffer(firstTape.getFile(), dataBufferFirstTape, true);
+                int firstTapeBytesRead = setNextBlock(firstTape, firstTapeBlock, true);
                 if (firstTapeBytesRead == 0) {
                     CommunicationManager.say("Exception in getting next block!");
                     return SortStatus.ERROR;
@@ -166,8 +166,8 @@ public class FileManager {
             if (secondIndex == RECORDS_IN_BLOCK || (isSecondTapeLastBlock && secondIndex == endSecondIndex)) {
                 secondTapeBlockRecords.clear();
                 secondIndex = 0;
-                flushBuffer(secondTape.getFile(), dataBufferSecondTape);
-                int secondTapeBytesRead = setNextBlock(secondTape, secondTapeBlock);
+                flushBuffer(secondTape.getFile(), dataBufferSecondTape, true);
+                int secondTapeBytesRead = setNextBlock(secondTape, secondTapeBlock, true);
                 if (secondTapeBytesRead == 0) {
                     CommunicationManager.say("Exception in getting next block!");
                     break;
@@ -296,39 +296,41 @@ public class FileManager {
 
     public static boolean writeToMergeTapeFile(File recordsFile, String stringToFile) {
         if (dataBufferMergeTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferMergeTape);
+            flushBuffer(recordsFile, dataBufferMergeTape, true);
         }
         dataBufferMergeTape.add(stringToFile);
         if (dataBufferMergeTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferMergeTape);
+            flushBuffer(recordsFile, dataBufferMergeTape, true);
         }
         return true;
     }
 
     public static boolean writeToFirstTapeFile(File recordsFile, String stringToFile) {
         if (dataBufferFirstTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferFirstTape);
+            flushBuffer(recordsFile, dataBufferFirstTape, true);
         }
         dataBufferFirstTape.add(stringToFile);
         if (dataBufferFirstTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferFirstTape);
+            flushBuffer(recordsFile, dataBufferFirstTape, true);
         }
         return true;
     }
 
     public static boolean writeToSecondTapeFile(File recordsFile, String stringToFile) {
         if (dataBufferSecondTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferSecondTape);
+            flushBuffer(recordsFile, dataBufferSecondTape, true);
         }
         dataBufferSecondTape.add(stringToFile);
         if (dataBufferSecondTape.size() == RECORDS_IN_BLOCK) {
-            flushBuffer(recordsFile, dataBufferSecondTape);
+            flushBuffer(recordsFile, dataBufferSecondTape, true);
         }
         return true;
     }
 
-    public static void flushBuffer(File recordsFile, List<String> buffer) {
-        wrotePages++;
+    public static void flushBuffer(File recordsFile, List<String> buffer, boolean count) {
+        if (count) {
+            wrotePages++;
+        }
         try {
             FileWriter fileWriter = new FileWriter(recordsFile, true);
             for (String data : buffer) {
@@ -342,19 +344,19 @@ public class FileManager {
         }
     }
 
-    public static void printFile(Tape mergetape) throws IOException {
+    public static void printFile(Tape mergeTape) throws IOException {
         CommunicationManager.say("---------------------------------");
         CommunicationManager.say("RECORDS FILE");
 
         byte[] block = new byte[BLOCK_SIZE_IN_BYTES];
         while (true) {
-            flushBuffer(mergetape.getFile(), dataBufferMergeTape);
-            int bytesRead = setNextBlock(mergetape, block);
+            flushBuffer(mergeTape.getFile(), dataBufferMergeTape, false);
+            int bytesRead = setNextBlock(mergeTape, block, false);
             if (bytesRead == 0) {
                 CommunicationManager.say("Exception in getting next block!");
                 break;
             } else if (bytesRead == -1) {
-                mergetape.setPositionInFile(0L);
+                mergeTape.setPositionInFile(0L);
                 break;
             }
 
@@ -368,9 +370,12 @@ public class FileManager {
 
     private static int setNextBlock(
             Tape tape,
-            byte[] block
+            byte[] block,
+            boolean count
     ) {
-        readPages++;
+        if (count) {
+            readPages++;
+        }
         try (RandomAccessFile raf = new RandomAccessFile(tape.getFile(), "r")) {
             raf.seek(tape.getPositionInFile());
 
