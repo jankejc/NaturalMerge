@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +12,8 @@ public class FileManager {
     private static final int BLOCK_SIZE_IN_BYTES = RECORDS_IN_BLOCK * RECORD_SIZE_IN_BYTES;
 
     public static int phase = 1;
+    public static int readPages = 0;
+    public static int wrotePages = 0;
 
     public static boolean naturalMergeSort(
             Tape mergeTape,
@@ -36,7 +39,6 @@ public class FileManager {
 
             byte[] block = new byte[BLOCK_SIZE_IN_BYTES];
             List<Record> records = new ArrayList<>();
-            int seriesNumber = 2;
             while (true) {
                 int bytesRead = setNextBlock(mergeTape, block);
                 if (bytesRead == 0) {
@@ -281,6 +283,7 @@ public class FileManager {
     }
 
     public static boolean writeToFile(File recordsFile, String stringToFile) {
+        wrotePages++;
         try {
             FileWriter fileWriter = new FileWriter(recordsFile, true);
             fileWriter.write(stringToFile);
@@ -312,9 +315,7 @@ public class FileManager {
             processBlock(
                     block,
                     bytesRead,
-                    parameters -> {
-                        CommunicationManager.say(new Record(parameters).getValue().toString());
-                    }
+                    parameters -> CommunicationManager.say(new Record(parameters).getValue().toString())
             );
         }
     }
@@ -323,6 +324,7 @@ public class FileManager {
             Tape tape,
             byte[] block
     ) {
+        readPages++;
         try (RandomAccessFile raf = new RandomAccessFile(tape.getFile(), "r")) {
             raf.seek(tape.getPositionInFile());
 
@@ -356,11 +358,7 @@ public class FileManager {
             byte[] number = new byte[endIndex - i];
             System.arraycopy(record, i, number, 0, endIndex - i);
 
-            try {
-                recordParameters[k++] = Long.parseLong(new String(number, 0, PARAMETER_SIZE_IN_BYTES, "UTF-8"));
-            } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException(e);
-            }
+            recordParameters[k++] = Long.parseLong(new String(number, 0, PARAMETER_SIZE_IN_BYTES, StandardCharsets.UTF_8));
         }
 
         return recordParameters;

@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -45,6 +44,8 @@ public class Main {
             CommunicationManager.somethingWentWrong("Natural merge has failed.");
             return;
         }
+
+        CommunicationManager.printStats();
 
         CommunicationManager.closeScanner();
     }

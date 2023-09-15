@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="504f0443-8797-4ca4-a60f-4fe5e3da0b05" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SBD_zadanie_1_wrzesien.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firstTape.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mergeTape — kopia.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mergeTape.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secondTape.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CommunicationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Record.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RecordsGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RecordsSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SortStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TapeType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_file.txt" afterDir="false" />
+    <list default="true" id="504f0443-8797-4ca4-a60f-4fe5e3da0b05" name="Changes" comment="working algorithm">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstTape.txt" beforeDir="false" afterPath="$PROJECT_DIR$/firstTape.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mergeTape — kopia.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mergeTape.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mergeTape.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/secondTape.txt" beforeDir="false" afterPath="$PROJECT_DIR$/secondTape.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommunicationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommunicationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RecordsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecordsGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_file.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,18 +43,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -91,10 +78,20 @@
       <option name="presentableId" value="Default" />
       <updated>1694241760368</updated>
     </task>
+    <task id="LOCAL-00001" summary="working algorithm">
+      <created>1694513571264</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694513571264</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="working algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="working algorithm" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

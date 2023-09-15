@@ -16,6 +16,15 @@ public class CommunicationManager {
         System.out.println("Welcome in Natural Merge simulator!");
     }
 
+    public static void printStats() {
+        System.out.println("---------------------------------");
+        System.out.println("STATISTICS");
+        System.out.println("phases number: " + (FileManager.phase - 1));
+        System.out.println("pages read: " + (FileManager.readPages - 1));
+        System.out.println("pages wrote: " + (FileManager.wrotePages - 1));
+
+    }
+
     public static void somethingWentWrong(String cause) {
         System.out.println("---------------------------------");
         System.out.println("Something went wrong, program will be stopped. \nCAUSE:\n" + cause);
@@ -31,7 +40,7 @@ public class CommunicationManager {
                 """
                         What records source do you want? (type the number)
                         1. Generate records.
-                        2. Put the records manually.
+                        2. Put records manually.
                         3. Records are in the file.
                         """
         );
@@ -98,7 +107,10 @@ public class CommunicationManager {
         String input;
         do {
             System.out.println("---------------------------------");
-            System.out.println("Type in " + RecordsGenerator.PARAMETER_NUMBERS + " whole numbers delimited by spaces in-between (ex. '10 -11 ... 32 -3').");
+            System.out.println("Type in " + RecordsGenerator.PARAMETER_NUMBERS +
+                    " whole numbers delimited by spaces in-between in range " +
+                    "[" + RecordsGenerator.RANDOM_MIN + "," + RecordsGenerator.RANDOM_MAX + "] " +
+                    "(ex. '-5 4 ... 2 5').");
             input = scanner.nextLine();
             numbers = input.split(" ");
 
